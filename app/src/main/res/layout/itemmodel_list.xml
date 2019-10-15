@@ -17,24 +17,32 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <ImageView
                 android:id="@+id/listImageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_background"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:background="#8B8A8A"
                 />
 
-            <TextView
-                android:id="@+id/textView"
+            <ImageButton
+                android:id="@+id/likebutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="50dp"
-                android:layout_toRightOf="@+id/listImageView"
-                android:gravity="center_vertical"
-                android:text="heloo"
-                android:textSize="20sp" />
+                android:background="#00FFFFFF"
+                android:padding="12dp"
+                android:layout_below="@+id/listImageView"
+                android:src="@drawable/ic_favorite_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/sharebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/likebutton"
+                android:layout_below="@+id/listImageView"
+                android:background="#00FFFFFF"
+                android:padding="12dp"
+                android:src="@drawable/ic_share_black_24dp" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

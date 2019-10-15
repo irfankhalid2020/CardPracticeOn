@@ -28,7 +28,7 @@ public class Main2Activity extends AppCompatActivity {
     TextView remainingTimeLabel;
     MediaPlayer mp;
     int totalTime;
-    int[] poems={R.raw.music,R.raw.naat1,R.raw.naat2,R.raw.naat3};
+    int[] poems={R.raw.nazam1,R.raw.nazam2,R.raw.nazam3,R.raw.nazam4,R.raw.nazam6,R.raw.nazam7,R.raw.nazam8,R.raw.nazam9,R.raw.nazam10,R.raw.nazam11,R.raw.nazam12,R.raw.nazam13,R.raw.nazam14,R.raw.nazam15,R.raw.nazam16};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

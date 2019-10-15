@@ -13,12 +13,16 @@
         android:layout_height="wrap_content"
         android:src="@drawable/image"
         android:layout_marginTop="60dp"/>
-
     <SeekBar
         android:id="@+id/positionBar"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"/>
+        android:layout_height="20dp"
+        android:layout_marginBottom="16dp"
+        android:progressDrawable="@drawable/progressbar"
+
+        android:layout_marginTop="30dp"
+        android:progress="0"
+        android:thumbTintMode="multiply" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -91,6 +95,7 @@
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:src="@drawable/sound2"/>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -36,9 +36,9 @@ public class CardView_adapter extends RecyclerView.Adapter<CardView_adapter.View
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.textView.setText(items.get(position).getCountryName());
+
         holder.imageView.setImageResource(items.get(position).getImage());
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               //int image= items.get(holder.getAdapterPosition()).getImage();
@@ -61,12 +61,12 @@ public class CardView_adapter extends RecyclerView.Adapter<CardView_adapter.View
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
+
         ImageView imageView;
         CardView cardView;
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView)itemView.findViewById(R.id.textView);
+
             imageView= (ImageView)itemView.findViewById(R.id.listImageView);
             cardView= itemView.findViewById(R.id.cardview);
         }

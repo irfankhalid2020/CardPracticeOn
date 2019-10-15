@@ -32,13 +32,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         textsimple = new ArrayList<>();
-        textsimple.add(new Item_Pojo(R.drawable.pakistan,"Pakistan"));
-        textsimple.add(new Item_Pojo(R.drawable.dubai,"Dubai"));
-        textsimple.add(new Item_Pojo(R.drawable.india,"India"));
-        textsimple.add(new Item_Pojo(R.drawable.sadi,"Saudi Arabia"));
-
-
-
+        textsimple.add(new Item_Pojo(R.drawable.image1));
+        textsimple.add(new Item_Pojo(R.drawable.image2));
+        textsimple.add(new Item_Pojo(R.drawable.image3));
+        textsimple.add(new Item_Pojo(R.drawable.image4));
+        textsimple.add(new Item_Pojo(R.drawable.image5));
+        textsimple.add(new Item_Pojo(R.drawable.image6));
+        textsimple.add(new Item_Pojo(R.drawable.image7));
+        textsimple.add(new Item_Pojo(R.drawable.image8));
+        textsimple.add(new Item_Pojo(R.drawable.image9));
+        textsimple.add(new Item_Pojo(R.drawable.image10));
+        textsimple.add(new Item_Pojo(R.drawable.image11));
+        textsimple.add(new Item_Pojo(R.drawable.image12));
+        textsimple.add(new Item_Pojo(R.drawable.image13));
+        textsimple.add(new Item_Pojo(R.drawable.image14));
+        textsimple.add(new Item_Pojo(R.drawable.image15));
 
     }
 
