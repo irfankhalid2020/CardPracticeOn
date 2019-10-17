@@ -2,6 +2,7 @@ package com.sunny.cardpracticeone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -20,7 +22,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 
 public class Main2Activity extends AppCompatActivity {
-
+    int i=1;
     Button playBtn;
     SeekBar positionBar;
     SeekBar volumeBar;
@@ -28,8 +30,9 @@ public class Main2Activity extends AppCompatActivity {
     TextView remainingTimeLabel;
     MediaPlayer mp;
     int totalTime;
+    Uri mediaPath;
     int[] poems={R.raw.nazam1,R.raw.nazam2,R.raw.nazam3,R.raw.nazam4,R.raw.nazam6,R.raw.nazam7,R.raw.nazam8,R.raw.nazam9,R.raw.nazam10,R.raw.nazam11,R.raw.nazam12,R.raw.nazam13,R.raw.nazam14,R.raw.nazam15,R.raw.nazam16};
-
+    String ID="R.raw.nazam1,R.raw.nazam2,R.raw.nazam3,R.raw.nazam4,R.raw.nazam6,R.raw.nazam7,R.raw.nazam8,R.raw.nazam9,R.raw.nazam10,R.raw.nazam11,R.raw.nazam12,R.raw.nazam13,R.raw.nazam14,R.raw.nazam15,R.raw.nazam16";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,20 @@ public class Main2Activity extends AppCompatActivity {
 
         // Media Player
         mp = MediaPlayer.create(this, poems[poem]);
+
+        mediaPath = Uri.parse("android.resource://" + getPackageName() + "/" + String.valueOf(poems[i]));
+        try {
+            mp.setDataSource(getApplicationContext(), mediaPath);
+            mp.prepare();
+            mp.start();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
@@ -89,26 +106,6 @@ public class Main2Activity extends AppCompatActivity {
 
 
         // Volume Bar
-        volumeBar = (SeekBar) findViewById(R.id.volumeBar);
-        volumeBar.setOnSeekBarChangeListener(
-                new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        float volumeNum = progress / 100f;
-                        mp.setVolume(volumeNum, volumeNum);
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-
-                    }
-                }
-        );
 
 
         // Thread (Update positionBar & timeLabel)
@@ -184,25 +181,49 @@ public class Main2Activity extends AppCompatActivity {
 
 
     public void doRewind(View view) {
-        int currentPosition = this.mp.getCurrentPosition();
-        int duration = this.mp.getDuration();
-        // 3 seconds.
-        int SUBTRACT_TIME = 3000;
+        if(i!=0) {
+            i--;
+            mp.reset();
+            try {
+                mediaPath = Uri.parse("android.resource://" + getPackageName() + "/" + String.valueOf(poems[i]));
+                mp.setDataSource(getApplicationContext(), mediaPath);
+                mp.prepare();
+                mp.seekTo(0);
 
-        if(currentPosition - SUBTRACT_TIME > 0 )  {
-            this.mp.seekTo(currentPosition - SUBTRACT_TIME);
+                totalTime = mp.getDuration();
+                positionBar.setMax(totalTime);
+                mp.start();
+                playBtn.setBackgroundResource(R.drawable.stop);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }else{
+            mp.seekTo(0);
         }
     }
 
     public void doFastForward(View view) {
-        int currentPosition = this.mp.getCurrentPosition();
-        int duration = this.mp.getDuration();
-        // 3 seconds.
-        int ADD_TIME = 3000;
+        Log.e("length", String.valueOf(poems.length));
+        if(i<poems.length-1) {
+            i++;
+            try {
+                mp.reset();
+                mediaPath = Uri.parse("android.resource://" + getPackageName() + "/" + String.valueOf(poems[i]));
+                mp.setDataSource(getApplicationContext(), mediaPath);
+                mp.prepare();
+                mp.seekTo(0);
 
-        if(currentPosition + ADD_TIME < duration)  {
-            this.mp.seekTo(currentPosition + ADD_TIME);
+                totalTime = mp.getDuration();
+                positionBar.setMax(totalTime);
+                mp.start();
+                playBtn.setBackgroundResource(R.drawable.stop);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }else{
+            mp.seekTo(0);
         }
-    }
 
-}
+}}

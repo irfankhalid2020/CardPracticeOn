@@ -3,7 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:tag="cards main container"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardBackgroundColor="#F8F7F7"
-        card_view:cardCornerRadius="10dp"
+         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true">
         <RelativeLayout
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/listImageView"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
                 android:background="#8B8A8A"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +52,20 @@ public class CardView_adapter extends RecyclerView.Adapter<CardView_adapter.View
 
             }
         });
+        holder.sharebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                share.putExtra(Intent.EXTRA_SUBJECT, "write your subject");
+                share.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=" );
+                activity.startActivity(Intent.createChooser(share, "Share App!"));
+
+
+            }
+        });
+
 
     }
 
@@ -64,11 +79,16 @@ public class CardView_adapter extends RecyclerView.Adapter<CardView_adapter.View
 
         ImageView imageView;
         CardView cardView;
+        ImageButton sharebutton;
         public ViewHolder(View itemView) {
             super(itemView);
 
             imageView= (ImageView)itemView.findViewById(R.id.listImageView);
             cardView= itemView.findViewById(R.id.cardview);
+            sharebutton= itemView.findViewById(R.id.sharebutton);
+
+
+
         }
     }
 }

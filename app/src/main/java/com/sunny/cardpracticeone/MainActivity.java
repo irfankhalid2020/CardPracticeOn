@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         textsimple = new ArrayList<>();
-        textsimple.add(new Item_Pojo(R.drawable.image1));
-        textsimple.add(new Item_Pojo(R.drawable.image2));
+        textsimple.add(new Item_Pojo(R.drawable.irfan));
+        textsimple.add(new Item_Pojo(R.drawable.usma));
         textsimple.add(new Item_Pojo(R.drawable.image3));
         textsimple.add(new Item_Pojo(R.drawable.image4));
         textsimple.add(new Item_Pojo(R.drawable.image5));

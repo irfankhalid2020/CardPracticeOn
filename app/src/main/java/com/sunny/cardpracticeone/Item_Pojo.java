@@ -1,7 +1,7 @@
 package com.sunny.cardpracticeone;
 
 public class Item_Pojo {
-   // private String Text;
+
     private int Image;
   //  private String CountryName;
 
