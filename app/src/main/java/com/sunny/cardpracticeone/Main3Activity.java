@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,9 +19,19 @@ Button btn1,btn2,btn3;
         btn1=findViewById(R.id.btn1);
         btn2=findViewById(R.id.btn2);
         btn3=findViewById(R.id.btn3);
-
+        populateData();
     }
 
+    private void populateData(){
+        DatabaseHandler handler=new DatabaseHandler(this);
+        if(handler.recordInserted()==0)
+        for (int i = 0; i < PoemConstants.POEMS_SOUNDS.length; i++) {
+            Poem poem = new Poem(PoemConstants.POEMS_SOUNDS[i], PoemConstants.POEM_THUMBS[i]);
+            poem.setFavourite(false);
+            handler.addData(poem);
+        }
+        handler.close();
+    }
 
     private void finishActivity() {
         finish();
@@ -61,6 +72,10 @@ Button btn1,btn2,btn3;
         int id = view.getId();
         if (id ==R.id.btn1){
             Intent intent= new Intent(Main3Activity.this,MainActivity.class);
+            startActivity(intent);
+        }else if (id ==R.id.btn2){
+            Intent intent= new Intent(Main3Activity.this,MainActivity.class);
+            intent.putExtra("fav",true);
             startActivity(intent);
         }
     }

@@ -32,13 +32,13 @@ public class Main2Activity extends AppCompatActivity {
     int totalTime;
     Uri mediaPath;
     int[] poems={R.raw.nazam1,R.raw.nazam2,R.raw.nazam3,R.raw.nazam4,R.raw.nazam6,R.raw.nazam7,R.raw.nazam8,R.raw.nazam9,R.raw.nazam10,R.raw.nazam11,R.raw.nazam12,R.raw.nazam13,R.raw.nazam14,R.raw.nazam15,R.raw.nazam16};
-    String ID="R.raw.nazam1,R.raw.nazam2,R.raw.nazam3,R.raw.nazam4,R.raw.nazam6,R.raw.nazam7,R.raw.nazam8,R.raw.nazam9,R.raw.nazam10,R.raw.nazam11,R.raw.nazam12,R.raw.nazam13,R.raw.nazam14,R.raw.nazam15,R.raw.nazam16";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        int poem=getIntent().getIntExtra("poem",0);
+        int poem=getIntent().getIntExtra("poem",PoemConstants.POEMS_SOUNDS[0]);
 
 
 
@@ -50,7 +50,7 @@ public class Main2Activity extends AppCompatActivity {
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
 
         // Media Player
-        mp = MediaPlayer.create(this, poems[poem]);
+        mp = MediaPlayer.create(this, poem);
 
         mediaPath = Uri.parse("android.resource://" + getPackageName() + "/" + String.valueOf(poems[i]));
         try {
